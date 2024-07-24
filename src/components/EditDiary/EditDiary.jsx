@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { IoIosAddCircle } from "react-icons/io";
-import styles from "./AddDiary.module.css";
+import styles from "./EditDiary.module.css";
 
-export default function AddDiary({ onAdd, diary }) {
+export default function DiaryEditForm({ diary, onSave, onCancel }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -15,13 +14,13 @@ export default function AddDiary({ onAdd, diary }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd({ ...diary, title, text });
+    onSave({ ...diary, title, text });
     setTitle("");
     setText("");
   };
 
   return (
-    <form className={styles.addDiaryForm} onSubmit={handleSubmit}>
+    <form className={styles.editDiaryForm} onSubmit={handleSubmit}>
       <input
         className={styles.title}
         type="text"
@@ -35,9 +34,21 @@ export default function AddDiary({ onAdd, diary }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button type="submit" className={styles.button}>
-        <IoIosAddCircle />
-      </button>
+      <div className={styles.buttons}>
+        <button
+          type="submit"
+          className={`${styles.button} ${styles.saveButton}`}
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          className={`${styles.button} ${styles.cancelButton}`}
+          onClick={onCancel}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

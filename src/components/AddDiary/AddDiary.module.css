@@ -31,7 +31,6 @@
   font-size: 18px;
   border: 0px solid;
   border-radius: 15px;
-  background-color: var(--color-bg);
   resize: none;
   padding: 5px;
 }
@@ -53,5 +52,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ff8787;
+  background: #696969;
 }
