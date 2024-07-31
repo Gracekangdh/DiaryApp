@@ -1,60 +1,39 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import DiaryForm from "../DiaryForm/DiaryForm";
-import AddDiary from "../AddDiary/AddDiary";
-import styles from "./DiaryList.module.css";
-import DiaryEditForm from "../EditDiary/EditDiary";
+import DiaryCard from "../DiaryCard/DiaryCard";
+import EditModeDiaryCard from "../EditModeDiaryCard/EditModeDiaryCard";
+import styles from "../DiaryList/DiaryList.module.css";
 
-export default function DiaryList() {
-  const [diaries, setDiaries] = useState([]);
-  const [editDiary, setEditDiary] = useState(null);
-
-  const handleAdd = (diary) => {
-    const newDiary = { ...diary, id: uuidv4() };
-    setDiaries([newDiary, ...diaries]);
-  };
+export default function DiaryList({ diaries, onDelete, onSave }) {
+  const [editingDiaryId, setEditingDiaryId] = useState(null);
 
   const handleEdit = (id) => {
-    const diaryToEdit = diaries.find((diary) => diary.id === id);
-    setEditDiary(diaryToEdit);
+    setEditingDiaryId(id);
   };
 
-  const handleDelete = (id) => {
-    setDiaries(diaries.filter((diary) => diary.id !== id));
+  const handleSave = (updatedDiary) => {
+    onSave(updatedDiary);
+    setEditingDiaryId(null);
   };
 
-  const handleSave = (editedDiary) => {
-    setDiaries(
-      diaries.map((diary) =>
-        diary.id === editedDiary.id ? editedDiary : diary
-      )
-    );
-    setEditDiary(null);
-  };
-
-  const handleCancel = () => {
-    setEditDiary(null);
+  const cancelEditMode = () => {
+    setEditingDiaryId(null);
   };
 
   return (
-    <div className={styles.diaryList}>
-      <AddDiary onAdd={handleAdd} />
+    <ul>
       {diaries.map((diary) => (
-        <DiaryForm
-          key={diary.id}
-          title={diary.title}
-          text={diary.text}
-          onEdit={() => handleEdit(diary.id)}
-          onDelete={() => handleDelete(diary.id)}
-        />
+        <li key={diary.id} className={styles.list}>
+          {editingDiaryId === diary.id ? (
+            <EditModeDiaryCard
+              diary={diary}
+              onCancel={cancelEditMode}
+              onSave={handleSave}
+            />
+          ) : (
+            <DiaryCard diary={diary} onDelete={onDelete} onEdit={handleEdit} />
+          )}
+        </li>
       ))}
-      {editDiary && (
-        <DiaryEditForm
-          diary={editDiary}
-          onSave={handleSave}
-          onCancel={handleCancel}
-        />
-      )}
-    </div>
+    </ul>
   );
 }

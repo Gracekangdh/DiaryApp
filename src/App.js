@@ -1,14 +1,18 @@
 import React from "react";
-import DiaryHome from "./components/Home/DiaryHome";
+import DiaryLayout from "./components/DiaryLayout/DiaryLayout";
 import DiaryHeader from "./components/DiaryHeader/DiaryHeader";
-import DiaryList from "./components/DiaryList/DiaryList";
+import Dashboard from "./components/Dashboard/Dashboard";
+
 export default function App() {
   return (
-    <>
-      <DiaryHome>
-        <DiaryHeader />
-        <DiaryList />
-      </DiaryHome>
-    </>
+    <DiaryLayout>
+      <DiaryHeader />
+      <Dashboard />
+    </DiaryLayout>
   );
 }
+
+// /
+// /new-diary
+// /ID
+// Not Found

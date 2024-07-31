@@ -1,0 +1,26 @@
+.diaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.button {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translate(-50%, 50%);
+  color: #696969;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+}

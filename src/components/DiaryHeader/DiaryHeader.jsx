@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./DiaryHeader.module.css";
-import { getCurrentDate } from "../../Utils/Date";
+import { getCurrentDate } from "../../utils/date";
 
 export default function DiaryHeader() {
   const { date, weekday } = getCurrentDate();
