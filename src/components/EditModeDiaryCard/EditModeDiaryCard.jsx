@@ -32,7 +32,7 @@ export default function EditModeDiaryCard({ diary, onSave, onCancel }) {
         onChange={handleChange}
         className={styles.text}
       />
-      <div>
+      <div className={styles.buttonWrapper}>
         <button onClick={handleSave} className={styles.saveButton}>
           <MdSaveAlt />
         </button>
