@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./Dashboard.module.css";
-import NewDiaryForm from "../NewDiaryForm/NewDiaryForm";
-import DiaryList from "../DiaryList/DiaryList";
+import NewDiaryForm from "../../pages/NewDiaryForm/NewDiaryForm";
+import DiaryList from "../../pages/DiaryList/DiaryList";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
 
 export default function Dashboard() {

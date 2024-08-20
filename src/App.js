@@ -1,34 +1,35 @@
 import React from "react";
-import Root from "./pages/Root";
 import DiaryLayout from "./components/DiaryLayout/DiaryLayout";
 import DiaryHeader from "./components/DiaryHeader/DiaryHeader";
 import Dashboard from "./components/Dashboard/Dashboard";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import NewDiary from "./pages/NewDiary-1";
-import DiaryDetail from "./components/DiaryDetail/DiaryDetail";
-import DiaryList from "./pages/DiaryList-1";
+import DiaryList from "./pages/DiaryList/DiaryList";
+//import NewDiaryForm from "./pages/NewDiaryForm/NewDiaryForm";
+import DiaryDetail from "./pages/DiaryDetail/DiaryDetail";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Home />,
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/new-diary", element: <NewDiary /> },
-      { path: "/diary", element: <DiaryList /> },
-      { path: "/diary/:diaryID", element: <DiaryDetail /> },
+      { path: "/DiaryList", element: <DiaryList /> },
+      { path: "/DiaryDetail", element: <DiaryDetail /> },
     ],
   },
 ]);
+
 export default function App() {
   return (
     <RouterProvider router={router}>
       <DiaryLayout>
-        <DiaryHeader />
-        <Dashboard />
+        <Outlet>
+          <DiaryHeader />
+          <Dashboard />
+        </Outlet>
       </DiaryLayout>
     </RouterProvider>
   );
