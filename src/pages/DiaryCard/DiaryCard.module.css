@@ -44,8 +44,10 @@
   font-size: 25px;
   border: none;
   outline: none;
-  background-color: blue;
   color: #696969;
+  background-color: transparent;
+  justify-content: flex-end;
+  display: inline-block;
 }
 
 .deleteButton {
@@ -55,6 +57,8 @@
   font-size: 25px;
   border: none;
   outline: none;
-  background-color: purple;
   color: #696969;
+  background-color: transparent;
+  justify-content: flex-end;
+  display: inline-block;
 }

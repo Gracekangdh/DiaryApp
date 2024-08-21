@@ -6,8 +6,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import DiaryList from "./pages/DiaryList/DiaryList";
-//import NewDiaryForm from "./pages/NewDiaryForm/NewDiaryForm";
 import DiaryDetail from "./pages/DiaryDetail/DiaryDetail";
+import DiaryCard from "./pages/DiaryCard/DiaryCard";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/DiaryList", element: <DiaryList /> },
-      { path: "/DiaryDetail", element: <DiaryDetail /> },
+      { path: "/Diary", element: <DiaryCard /> },
+      { path: "/DiaryDetail/:diaryID", element: <DiaryDetail /> },
     ],
   },
 ]);
