@@ -3,7 +3,7 @@ export function getCurrentDate() {
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
   const day = String(today.getDate()).padStart(2, "0");
-  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thue", "Fri", "Sat"][
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"][
     today.getDay()
   ];
 

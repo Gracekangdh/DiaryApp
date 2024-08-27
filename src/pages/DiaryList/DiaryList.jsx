@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DiaryCard from "../DiaryCard/DiaryCard";
-import EditModeDiaryCard from "../../components/EditModeDiaryCard/EditModeDiaryCard";
 import styles from "../DiaryList/DiaryList.module.css";
+import EditModeDiaryCard from "../../components/EditModeDiaryCard/EditModeDiaryCard";
 
 export default function DiaryList({ diaries, onDelete, onSave }) {
   const [editingDiaryId, setEditingDiaryId] = useState(null);

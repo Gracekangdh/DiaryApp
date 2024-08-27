@@ -43,7 +43,9 @@ export default function Dashboard() {
 
   return (
     <div className={styles.diaryList}>
-      {showNewDiaryForm && <NewDiaryForm onAdd={handleAdd} />}
+      {showNewDiaryForm && (
+        <NewDiaryForm onAdd={handleAdd} className={styles.newDiaryForm} />
+      )}
       <DiaryList diaries={diaries} onDelete={handleDelete} onSave={onSave} />
       <button onClick={toggleNewDiaryForm} className={styles.button}>
         {showNewDiaryForm ? <IoMdClose /> : <IoMdAdd />}
