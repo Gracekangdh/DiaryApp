@@ -15,20 +15,13 @@ export default function Dashboard() {
 
   const handleAdd = (diary) => {
     const newDiary = { ...diary, id: uuidv4() };
+    console.log(newDiary);
     setDiaries([newDiary, ...diaries]);
     toggleNewDiaryForm();
   };
 
   const handleDelete = (id) => {
     setDiaries(diaries.filter((diary) => diary.id !== id));
-  };
-
-  const onSave = (updatedDiary) => {
-    setDiaries((currentDiaries) =>
-      currentDiaries.map((diary) =>
-        diary.id === updatedDiary.id ? updatedDiary : diary
-      )
-    );
   };
 
   // const storedDiaries = localStorage.getItem("diaries");
@@ -46,7 +39,7 @@ export default function Dashboard() {
       {showNewDiaryForm && (
         <NewDiaryForm onAdd={handleAdd} className={styles.newDiaryForm} />
       )}
-      <DiaryList diaries={diaries} onDelete={handleDelete} onSave={onSave} />
+      <DiaryList diaries={diaries} onDelete={handleDelete} />
       <button onClick={toggleNewDiaryForm} className={styles.button}>
         {showNewDiaryForm ? <IoMdClose /> : <IoMdAdd />}
       </button>

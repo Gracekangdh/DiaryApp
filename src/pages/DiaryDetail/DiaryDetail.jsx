@@ -1,44 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import DiaryCard from "../DiaryCard/DiaryCard";
-import EditModeDiaryCard from "../../components/EditModeDiaryCard/EditModeDiaryCard";
+import { useDiaries } from "../../hooks/use-diaries";
 
-export default function CardDetail({ diaries, onDelete, onSave }) {
-  const { diaryID } = useParams();
+export default function DiaryDetail() {
+  const [diary, setDiary] = useState(null);
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [isEditing, setIsEditing] = useState(false);
 
-  const diary = diaries.find((diary) => diary.id === diaryID);
+  const { diaries } = useDiaries();
 
   const handleBackClick = () => {
     navigate(-1);
   };
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
+  useEffect(() => {
+    const foundDiary = diaries.find((diary) => diary.id === id);
+    setDiary(foundDiary);
+  }, [diaries, id]);
 
-  const handleSave = (updatedDiary) => {
-    onSave(updatedDiary);
-    setIsEditing(false);
-  };
+  if (diary === null) return <p>Loading...</p>;
 
   return (
     <div>
-      {isEditing ? (
-        <EditModeDiaryCard
-          diary={diary}
-          onSave={handleSave}
-          onCancel={() => setIsEditing(false)}
-        />
-      ) : (
-        <DiaryCard
-          diary={diary}
-          onDelete={onDelete}
-          onEdit={handleEditClick}
-          isEditable={true}
-        />
-      )}
       <button onClick={handleBackClick}>Back</button>
     </div>
   );

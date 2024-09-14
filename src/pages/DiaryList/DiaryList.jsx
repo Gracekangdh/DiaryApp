@@ -7,7 +7,7 @@ export default function DiaryList({ diaries, onDelete }) {
     <ul>
       {diaries.map((diary) => (
         <li key={diary.id} className={styles.list}>
-          <DiaryCard diary={diary} onDelete={onDelete} isEditable={true} />
+          <DiaryCard diary={diary} onDelete={onDelete} />
         </li>
       ))}
     </ul>
