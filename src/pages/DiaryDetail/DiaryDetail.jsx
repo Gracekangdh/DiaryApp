@@ -14,13 +14,13 @@ export default function DiaryDetail() {
   };
 
   const handleDelete = () => {
-    deleteDiary(id);
-    navigate(-1); // useEffect가 더 먼저 발생
+    deleteDiary(id) //
+      .then(() => navigate(-1)); // useEffect가 더 먼저 발생
   };
 
   useEffect(() => {
     const foundDiary = diaries.find((diary) => diary.id === id);
-    setDiary(foundDiary);
+    setDiary(foundDiary ?? null);
   }, [diaries, id]);
 
   if (diary === null) return <p>Loading...</p>;

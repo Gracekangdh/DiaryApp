@@ -9,7 +9,7 @@ export function useDiaries() {
     saveDiariesToLocalStorage(updatedDiaries);
   };
 
-  const deleteDiary = (id) => {
+  const deleteDiary = async (id) => {
     const updatedDiaries = diaries.filter((diary) => diary.id !== id);
     setDiaries(updatedDiaries);
     saveDiariesToLocalStorage(updatedDiaries);
