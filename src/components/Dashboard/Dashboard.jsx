@@ -4,9 +4,10 @@ import styles from "./Dashboard.module.css";
 import NewDiaryForm from "../NewDiaryForm/NewDiaryForm";
 import DiaryList from "../../pages/DiaryList/DiaryList";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
+import { useDiaries } from "../../hooks/use-diaries";
 
 export default function Dashboard() {
-  const [diaries, setDiaries] = useState(() => readDiariesFromLocalStorage());
+  const { diaries, addDiary, deleteDiary } = useDiaries();
   const [showNewDiaryForm, setShowNewDiaryForm] = useState(false);
 
   const toggleNewDiaryForm = () => {
@@ -15,14 +16,13 @@ export default function Dashboard() {
 
   const handleAdd = (diary) => {
     const newDiary = { ...diary, id: uuidv4() };
-    console.log(newDiary);
-    setDiaries([newDiary, ...diaries]);
+    addDiary(newDiary);
     toggleNewDiaryForm();
   };
 
-  const handleDelete = (id) => {
-    setDiaries(diaries.filter((diary) => diary.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   setDiaries(diaries.filter((diary) => diary.id !== id));
+  // };
 
   // const storedDiaries = localStorage.getItem("diaries");
   // if (storedDiaries) { // truthy : [] <-> null undefined
@@ -30,8 +30,13 @@ export default function Dashboard() {
   // } -> (한번만) 저장되어있는 것을 GET! 상태를 업데이트하고 useEffect...
   // 내가 쓸 로직이 함수 안에 혹은 밖에 있어야 하는가 확인!
 
+  // useEffect(() => {
+  //   localStorage.setItem("diaries", JSON.stringify(diaries));
+  // }, [diaries]);
+
   useEffect(() => {
-    localStorage.setItem("diaries", JSON.stringify(diaries));
+    console.log("dashboard diaries:");
+    console.log(diaries);
   }, [diaries]);
 
   return (
@@ -39,7 +44,7 @@ export default function Dashboard() {
       {showNewDiaryForm && (
         <NewDiaryForm onAdd={handleAdd} className={styles.newDiaryForm} />
       )}
-      <DiaryList diaries={diaries} onDelete={handleDelete} />
+      <DiaryList diaries={diaries} onDelete={deleteDiary} />
       <button onClick={toggleNewDiaryForm} className={styles.button}>
         {showNewDiaryForm ? <IoMdClose /> : <IoMdAdd />}
       </button>
@@ -47,7 +52,7 @@ export default function Dashboard() {
   );
 }
 
-function readDiariesFromLocalStorage() {
-  const diaries = localStorage.getItem("diaries");
-  return diaries ? JSON.parse(diaries) : [];
-}
+// function readDiariesFromLocalStorage() {
+//   const diaries = localStorage.getItem("diaries");
+//   return diaries ? JSON.parse(diaries) : [];
+// }

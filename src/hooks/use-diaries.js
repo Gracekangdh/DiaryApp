@@ -3,11 +3,25 @@ import { useState } from "react";
 export function useDiaries() {
   const [diaries, setDiaries] = useState(() => readDiariesFromLocalStorage());
 
-  const addDiary = () => {};
+  const addDiary = (newDiary) => {
+    const updatedDiaries = [...diaries, newDiary];
+    setDiaries(updatedDiaries);
+    saveDiariesToLocalStorage(updatedDiaries);
+  };
 
-  const deleteDiary = () => {};
+  const deleteDiary = (id) => {
+    const updatedDiaries = diaries.filter((diary) => diary.id !== id);
+    setDiaries(updatedDiaries);
+    saveDiariesToLocalStorage(updatedDiaries);
+  };
 
-  const updateDiary = () => {};
+  const updateDiary = (updatedDiary) => {
+    const updatedDiaries = diaries.map((diary) =>
+      diary.id === updatedDiary.id ? updatedDiary : diary
+    );
+    setDiaries(updatedDiaries);
+    saveDiariesToLocalStorage(updatedDiaries);
+  };
 
   return {
     diaries,
@@ -20,4 +34,7 @@ export function useDiaries() {
 function readDiariesFromLocalStorage() {
   const diaries = localStorage.getItem("diaries");
   return diaries ? JSON.parse(diaries) : [];
+}
+function saveDiariesToLocalStorage(diaries) {
+  localStorage.setItem("diaries", JSON.stringify(diaries));
 }
