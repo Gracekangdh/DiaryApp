@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useDiaries() {
   const [diaries, setDiaries] = useState(() => readDiariesFromLocalStorage());
@@ -6,13 +6,11 @@ export function useDiaries() {
   const addDiary = (newDiary) => {
     const updatedDiaries = [...diaries, newDiary];
     setDiaries(updatedDiaries);
-    saveDiariesToLocalStorage(updatedDiaries);
   };
 
   const deleteDiary = async (id) => {
     const updatedDiaries = diaries.filter((diary) => diary.id !== id);
     setDiaries(updatedDiaries);
-    saveDiariesToLocalStorage(updatedDiaries);
   };
 
   const updateDiary = (updatedDiary) => {
@@ -20,8 +18,11 @@ export function useDiaries() {
       diary.id === updatedDiary.id ? updatedDiary : diary
     );
     setDiaries(updatedDiaries);
-    saveDiariesToLocalStorage(updatedDiaries);
   };
+
+  useEffect(() => {
+    localStorage.setItem("diaries", JSON.stringify(diaries));
+  }, [diaries]);
 
   return {
     diaries,
@@ -34,7 +35,4 @@ export function useDiaries() {
 function readDiariesFromLocalStorage() {
   const diaries = localStorage.getItem("diaries");
   return diaries ? JSON.parse(diaries) : [];
-}
-function saveDiariesToLocalStorage(diaries) {
-  localStorage.setItem("diaries", JSON.stringify(diaries));
 }
