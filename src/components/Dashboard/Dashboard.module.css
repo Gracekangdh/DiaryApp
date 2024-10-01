@@ -5,6 +5,7 @@
   padding: 20px;
   overflow-y: auto;
   list-style-type: none;
+  color: var(--color-bg);
 }
 
 .button {
