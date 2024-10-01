@@ -1,63 +1,68 @@
 .cardDetail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
   background: #ffffff;
-  display: inline-flexbox;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 85%;
-  height: 80%;
+  width: 90%;
+  height: 100vh;
   border-radius: 15px;
   margin-top: 0 auto;
-  outline: #696969;
 }
 
-/* .title {
-  width: 100%;
-  font-size: 24px;
-  justify-content: center;
-  border: 0px solid;
-  background-color: transparent;
+.title,
+.editingTitle {
+  margin: 80px 0 20px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 15px;
-  position: relative;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 10%;
+  background: transparent;
+  padding: 10px;
+  text-align: center;
+}
+.text,
+.editingText {
+  margin: 20px 0 20px;
+  height: 70%;
+  font-size: 20px;
+  border: none;
 }
 
-.text {
-  width: 100%;
-  height: 300px;
-  font-size: 18px;
-  border: 0px solid;
-  border-radius: 15px;
-  resize: none;
-  padding: 5px;
+button {
+  cursor: pointer;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  display: block;
 }
 
 .buttonWrapper {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+}
+.backBtn {
+  margin-top: 20px;
+  border: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
 }
 
-.editButton {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 25px;
+.saveBtn {
+  justify-content: center;
+  align-items: center;
+  display: flex;
   border: none;
-  outline: none;
-  color: #696969;
-  background-color: transparent;
+  font-size: 30px;
+}
+
+.editBtn,
+.deleteBtn {
   justify-content: flex-end;
   display: inline-block;
 }
-
-.deleteButton {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 25px;
-  border: none;
-  outline: none;
-  color: #696969;
-  background-color: transparent;
-  justify-content: flex-end;
-  display: inline-block;
-} */
