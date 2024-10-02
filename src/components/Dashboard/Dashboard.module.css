@@ -5,7 +5,8 @@
   padding: 20px;
   overflow-y: auto;
   list-style-type: none;
-  color: var(--color-bg);
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 .button {
@@ -19,7 +20,7 @@
   left: 50%;
   bottom: 30px;
   transform: translate(-50%, 50%);
-  color: #696969;
+  color: var(--color-text);
   border-radius: 50%;
   border: none;
   outline: none;

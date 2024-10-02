@@ -4,12 +4,17 @@
   --color-grey: #d1d1d1;
   --color-text: #22243b;
   --color-accent: #f16e03;
+  --color-card: #d3d3d3;
   --color-white: white;
-  --color-scrollbar: #red;
+  --color-scrollbar: #a9a9a9;
 }
 
 html.dark {
-  --color-bg-dark: #1a1c35;
+  --color-bg-dark: #414141;
+  --color-bg: #414141;
+  --color-card: #656565;
+  --color-grey: #4e4e4e;
+  --color-text: #fdfffd;
 }
 
 body {
@@ -21,6 +26,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: #d3d3d3;
+}
+::-webkit-scrollbar {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+  border-radius: 10px;
+  background-clip: padding-box;
 }
 
 code {
