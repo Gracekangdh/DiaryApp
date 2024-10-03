@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./Dashboard.module.css";
 import NewDiaryForm from "../NewDiaryForm/NewDiaryForm";
@@ -19,8 +19,6 @@ export default function Dashboard() {
     addDiary(newDiary);
     toggleNewDiaryForm();
   };
-
-  useEffect(() => {}, [diaries]);
 
   return (
     <div className={styles.diaryList}>
