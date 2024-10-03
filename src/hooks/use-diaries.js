@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 export function useDiaries() {
-  const [diaries, setDiaries] = useState(() => readDiariesFromLocalStorage());
+  const [diaries, setDiaries] = useState(readDiariesFromLocalStorage());
 
   const addDiary = (newDiary) => {
     const updatedDiaries = [...diaries, newDiary];
     setDiaries(updatedDiaries);
   };
 
-  const deleteDiary = async (id) => {
+  const deleteDiary = (id) => {
     const updatedDiaries = diaries.filter((diary) => diary.id !== id);
     setDiaries(updatedDiaries);
   };

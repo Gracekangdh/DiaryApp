@@ -18,7 +18,7 @@ export default function DiaryDetail() {
   };
 
   const handleDelete = () => {
-    deleteDiary(id).then(() => navigate(-1));
+    deleteDiary(id);
   };
 
   const toggleEdit = () => {
@@ -43,9 +43,9 @@ export default function DiaryDetail() {
       setDiary(foundDiary);
       setNewDiary({ title: foundDiary.title, text: foundDiary.text });
     } else {
-      throw Error("Diary Not Found");
+      navigate(-1);
     }
-  }, [diaries, id]);
+  }, [diaries, id, navigate]);
 
   if (diary === null) return <p>Loading...</p>;
 
