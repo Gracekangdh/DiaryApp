@@ -1,3 +1,5 @@
 .list {
   list-style-type: none;
+  padding-bottom: 15px;
+  color: var(--color-text);
 }
