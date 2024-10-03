@@ -7,7 +7,7 @@ import { IoMdAdd, IoMdClose } from "react-icons/io";
 import { useDiaries } from "../../hooks/use-diaries";
 
 export default function Dashboard() {
-  const { diaries, addDiary, deleteDiary } = useDiaries();
+  const { diaries, addDiary } = useDiaries();
   const [showNewDiaryForm, setShowNewDiaryForm] = useState(false);
 
   const toggleNewDiaryForm = () => {
@@ -25,7 +25,7 @@ export default function Dashboard() {
       {showNewDiaryForm && (
         <NewDiaryForm onAdd={handleAdd} className={styles.newDiaryForm} />
       )}
-      <DiaryList diaries={diaries} onDelete={deleteDiary} />
+      <DiaryList diaries={diaries} />
       <button onClick={toggleNewDiaryForm} className={styles.button}>
         {showNewDiaryForm ? <IoMdClose /> : <IoMdAdd />}
       </button>
