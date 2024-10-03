@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../DiaryCard/DiaryCard.module.css";
 
-export default function DiaryCard({ diary, onDelete }) {
+export default function DiaryCard({ diary }) {
   const { title, text, id } = diary;
   const navigate = useNavigate();
   const handleDetailClick = () => {
