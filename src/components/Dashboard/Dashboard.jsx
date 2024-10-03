@@ -20,10 +20,7 @@ export default function Dashboard() {
     toggleNewDiaryForm();
   };
 
-  useEffect(() => {
-    console.log("dashboard diaries:");
-    console.log(diaries);
-  }, [diaries]);
+  useEffect(() => {}, [diaries]);
 
   return (
     <div className={styles.diaryList}>

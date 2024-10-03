@@ -18,8 +18,7 @@ export default function DiaryDetail() {
   };
 
   const handleDelete = () => {
-    deleteDiary(id) //
-      .then(() => navigate(-1)); // useEffect가 더 먼저 발생
+    deleteDiary(id).then(() => navigate(-1));
   };
 
   const toggleEdit = () => {
