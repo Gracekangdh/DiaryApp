@@ -4,7 +4,6 @@ import { useDiaries } from "../../hooks/use-diaries";
 import styles from "../DiaryDetail/DiaryDetail.module.css";
 import { IoChevronBack } from "react-icons/io5";
 import { MdSaveAlt, MdEdit, MdOutlineDelete } from "react-icons/md";
-import NotFound from "../NotFound";
 
 export default function DiaryDetail() {
   const [diary, setDiary] = useState(null);
@@ -44,12 +43,11 @@ export default function DiaryDetail() {
       setDiary(foundDiary);
       setNewDiary({ title: foundDiary.title, text: foundDiary.text });
     } else {
-      setDiary(false);
+      throw Error("Diary Not Found");
     }
   }, [diaries, id]);
 
   if (diary === null) return <p>Loading...</p>;
-  if (diary === false) return <NotFound />;
 
   return (
     <div className={styles.cardDetail}>
